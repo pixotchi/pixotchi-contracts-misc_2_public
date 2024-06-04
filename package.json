@@ -1,0 +1,32 @@
+{
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.6",
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@openzeppelin/hardhat-upgrades": "^3.1.0",
+    "@tenderly/hardhat-tenderly": "^2.2.2",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.12.1",
+    "hardhat": "^2.22.4"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "@openzeppelin/contracts-upgradeable": "^5.0.2"
+  },
+  "scripts": {
+    "spawn-devnet": "node ./util/spawn-devnet.js",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "node": "npx hardhat node",
+    "ignition:deploy:token:localhost": "npx hardhat ignition deploy ignition/modules/Claim.ts --network localhost",
+    "ignition:deploy:claim:localhost": "npx hardhat ignition deploy ignition/modules/Claim.ts --network localhost",
+    "ignition:visualize:claim:localhost": "npx hardhat ignition visualize ignition/modules/Claim.ts --network localhost",
+    "test:claim": "npx hardhat test test/claim.ts",
+    "ignition:deploy:claim": "npx hardhat ignition deploy ignition/modules/Claim.ts --network base",
+    "ignition:deploy:passport:baseSepolia": "npx hardhat ignition deploy ignition/modules/Passport.ts --network baseSepolia --verify",
+    "script:deploy:passport:baseSepolia": "npx hardhat run scripts/deploy-pixotchi-passport.ts --network baseSepolia",
+    "script:deploy:passport:tenderly": "npm run spawn-devnet && npx hardhat run scripts/deploy-pixotchi-passport.ts --network tenderly",
+    "ignition:deploy:rewardForwarder:baseSepolia": "npx hardhat ignition deploy ignition/modules/RewardForwarder.ts --network baseSepolia --verify -strategy create2",
+    "ignition:deploy:rewardForwarder:localhost": "npx hardhat ignition deploy ignition/modules/RewardForwarder.ts --network localhost  --strategy create2"
+  }
+}
